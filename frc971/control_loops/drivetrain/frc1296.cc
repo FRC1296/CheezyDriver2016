@@ -27,8 +27,8 @@ extern "C" void CheezyInit1296(void)
   config1296.t = (config1296.stall_torque / config1296.stall_current);  // Torque constant.
 
   config1296.turn_width = (0.558 * 4.0);  // Robot turn width, in meters.
-  config1296.high_gear_ratio = 1.0;  // Gear ratios, from encoder shaft to transmission output.
-  config1296.low_gear_ratio = 1.0;
+  config1296.high_gear_ratio = 28.0;  // Gear ratios
+  config1296.low_gear_ratio = 28.0;
 
   loop1296 = new DrivetrainLoop(config1296);
 }
