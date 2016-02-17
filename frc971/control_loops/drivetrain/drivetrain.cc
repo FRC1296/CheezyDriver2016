@@ -127,13 +127,9 @@ void DrivetrainLoop::RunIteration(
 
   if (control_loop_driving) {
     dt_closedloop_.Update(output == NULL, true);
-#ifdef INCLUDE_971_INFRASTRUCTURE
     dt_closedloop_.SendMotors(output);
-#endif //INCLUDE_971_INFRASTRUCTURE
   } else {
-#ifdef INCLUDE_971_INFRASTRUCTURE
     dt_openloop_.SendMotors(output);
-#endif //INCLUDE_971_INFRASTRUCTURE
     if (output) {
       dt_closedloop_.SetExternalMotors(output->left_voltage,
                                        output->right_voltage);
