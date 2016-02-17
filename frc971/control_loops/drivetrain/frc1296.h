@@ -1,10 +1,6 @@
 #ifndef FRC1296_H_
 #define FRC1296_H_
 
-namespace frc971 {
-namespace control_loops {
-namespace drivetrain {
-
 // Structs to carry information about the drivetrain.
 struct DrivetrainGoal {
     double steering;
@@ -22,6 +18,8 @@ struct DrivetrainPosition {
     double left_encoder;
     double right_encoder;
     double gyro_angle;
+    double gyro_velocity;
+    double battery_voltage;
     bool left_shifter_position;
     bool right_shifter_position; 
   };

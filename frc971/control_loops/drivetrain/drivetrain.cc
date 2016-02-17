@@ -160,7 +160,7 @@ void DrivetrainLoop::RunIteration(
 #ifdef INCLUDE_971_INFRASTRUCTURE
   const double scalar = ::aos::robot_state->voltage_battery / 12.0;
 #else //INCLUDE_971_INFRASTRUCTURE
-  const double scalar = 1.0;  // TKB need to get battery state in here...
+  const double scalar = position->battery_voltage / 12.0; 
 #endif //INCLUDE_971_INFRASTRUCTURE
 
   left_voltage *= scalar;
