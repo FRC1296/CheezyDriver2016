@@ -65,6 +65,7 @@ struct DrivetrainPosition {
     double left_encoder;
     double right_encoder;
     double gyro_angle;
+    double gyro_rate;
     bool left_shifter_position;
     bool right_shifter_position; // TODO (jasmine): do we need both of these?
   };

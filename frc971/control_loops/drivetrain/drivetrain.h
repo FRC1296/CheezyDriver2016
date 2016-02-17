@@ -62,9 +62,9 @@ virtual void RunIteration(
   typedef ::aos::util::SimpleLogInterval SimpleLogInterval;
   SimpleLogInterval no_position_ = SimpleLogInterval(
       ::aos::time::Time::InSeconds(0.25), WARNING, "no position");
-#endif //INCLUDE_971_INFRASTRUCTURE
   double last_gyro_heading_ = 0.0;
   double last_gyro_rate_ = 0.0;
+#endif //INCLUDE_971_INFRASTRUCTURE
 
   double last_left_voltage_ = 0;
   double last_right_voltage_ = 0;

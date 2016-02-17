@@ -77,7 +77,7 @@ void DrivetrainLoop::RunIteration(
 
   {
     Eigen::Matrix<double, 3, 1> Y;
-    Y << position->left_encoder, position->right_encoder, last_gyro_rate_;
+    Y << position->left_encoder, position->right_encoder, position->gyro_rate;
     kf_.Correct(Y);
     integrated_kf_heading_ += dt_config_.dt *
                               (kf_.X_hat(3, 0) - kf_.X_hat(1, 0)) /
