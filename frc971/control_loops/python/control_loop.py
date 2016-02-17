@@ -31,7 +31,7 @@ class ControlLoopWriter(object):
     if namespaces:
       self._namespaces = namespaces
     else:
-      self._namespaces = ['frc971', 'control_loops']
+      self._namespaces = ['frc971', 'control_loops', 'drivetrain']
 
     self._namespace_start = '\n'.join(
         ['namespace %s {' % name for name in self._namespaces])

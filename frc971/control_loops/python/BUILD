@@ -56,18 +56,4 @@ py_library(
   ],
 )
 
-genrule(
- name = 'genrule_polydrivetrain',
- visibility = ['//visibility:private'],
- cmd = '$(location //frc971/control_loops/python:polydrivetrain) $(OUTS)',
- tools = [ 
-   '//frc971/control_loops/python:polydrivetrain',
- ],  
- outs = [ 
-   'polydrivetrain_dog_motor_plant.h',
-   'polydrivetrain_dog_motor_plant.cc',
-   'polydrivetrain_cim_plant.h',
-   'polydrivetrain_cim_plant.cc',
- ],  
-)
 

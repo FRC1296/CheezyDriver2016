@@ -2,6 +2,38 @@ package(default_visibility = ['//visibility:public'])
 
 #load('/aos/build/queues', 'queue_library')
 
+genrule(
+  name = 'genrule_drivetrain',
+  visibility = ['//visibility:private'],
+  cmd = '$(location //frc971/control_loops/python:drivetrain) $(OUTS)',
+  tools = [
+    '//frc971/control_loops/python:drivetrain',
+  ],
+  outs = [
+    'drivetrain_dog_motor_plant.h',
+    'drivetrain_dog_motor_plant.cc',
+    'kalman_drivetrain_motor_plant.h',
+    'kalman_drivetrain_motor_plant.cc',
+  ],
+)
+
+genrule(
+  name = 'genrule_polydrivetrain',
+  visibility = ['//visibility:private'],
+  cmd = '$(location //frc971/control_loops/python:polydrivetrain) $(OUTS)',
+  tools = [
+    '//frc971/control_loops/python:polydrivetrain',
+  ],
+  outs = [
+    'polydrivetrain_dog_motor_plant.h',
+    'polydrivetrain_dog_motor_plant.cc',
+    'polydrivetrain_cim_plant.h',
+    'polydrivetrain_cim_plant.cc',
+  ],
+)
+
+
+
 #cc_binary(
 #  name = 'replay_drivetrain',
 #  srcs = [
@@ -88,11 +120,15 @@ cc_library(
     'frc1296.cc',
     'polydrivetrain_cim_plant.cc',
     'polydrivetrain_dog_motor_plant.cc',
+    'drivetrain_dog_motor_plant.cc',
+    'kalman_drivetrain_motor_plant.cc',
   ],
   hdrs = [
     'drivetrain.h',
     'polydrivetrain_cim_plant.h',
     'polydrivetrain_dog_motor_plant.h',
+    'kalman_drivetrain_motor_plant.h',
+    'drivetrain_dog_motor_plant.h',
   ],
   deps = [
 #    ':drivetrain_queue',

@@ -1,6 +1,9 @@
-#include "frc971/control_loops/drivetrain/drivetrain.h"
-
 #include <stdio.h>
+#include "frc971/control_loops/drivetrain/drivetrain.h"
+#include "frc971/control_loops/drivetrain/drivetrain_dog_motor_plant.h"
+#include "frc971/control_loops/drivetrain/polydrivetrain_dog_motor_plant.h"
+#include "frc971/control_loops/drivetrain/kalman_drivetrain_motor_plant.h"
+
 
 namespace frc971 {
 namespace control_loops {
@@ -12,6 +15,10 @@ struct DrivetrainConfig config1296;
 extern "C" void CheezyInit1296(void)
 {
   config1296.shifter_type = ShifterType::SIMPLE_SHIFTER;
+
+  config1296.make_drivetrain_loop = MakeDrivetrainLoop;
+  config1296.make_v_drivetrain_loop = MakeVelocityDrivetrainLoop;
+  config1296.make_kf_drivetrain_loop = MakeKFDrivetrainLoop;
 
   config1296.dt = 0.02;  // Control loop time step.
   config1296.stall_torque = 0.71;  // Stall torque in N m.

@@ -309,7 +309,7 @@ def main(argv):
   if len(argv) != 5:
     print "Expected .h file name and .cc file name"
   else:
-    namespaces = ['y2014', 'control_loops', 'drivetrain']
+    namespaces = ['frc971', 'control_loops', 'drivetrain']
     dog_loop_writer = control_loop.ControlLoopWriter(
         "Drivetrain", [drivetrain_low_low, drivetrain_low_high,
                        drivetrain_high_low, drivetrain_high_high],

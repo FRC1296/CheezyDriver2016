@@ -413,7 +413,7 @@ def main(argv):
   if len(argv) != 5:
     glog.fatal('Expected .h file name and .cc file name')
   else:
-    namespaces = ['y2014', 'control_loops', 'drivetrain']
+    namespaces = ['frc971', 'control_loops', 'drivetrain']
     dog_loop_writer = control_loop.ControlLoopWriter(
         "VelocityDrivetrain", [vdrivetrain.drivetrain_low_low,
                        vdrivetrain.drivetrain_low_high,
