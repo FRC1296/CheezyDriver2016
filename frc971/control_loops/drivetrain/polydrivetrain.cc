@@ -56,9 +56,16 @@ PolyDrivetrain::PolyDrivetrain(const DrivetrainConfig &dt_config)
   last_position_.left_encoder = 0.0;
   last_position_.right_encoder = 0.0;
   last_position_.gyro_angle = 0.0;
+  last_position_.gyro_rate = 0.0;
+  last_position_.left_shifter_position = false;
+  last_position_.right_shifter_position = false;
+
   position_.left_encoder = 0.0;
   position_.right_encoder = 0.0;
   position_.gyro_angle = 0.0;
+  position_.gyro_rate = 0.0;
+  position_.left_shifter_position = false;
+  position_.right_shifter_position = false;
 #endif //INCLUDE_971_INFRASTRUCTURE
 }
 
