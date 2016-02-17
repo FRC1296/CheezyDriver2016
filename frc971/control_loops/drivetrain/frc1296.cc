@@ -20,22 +20,22 @@ extern "C" void CheezyInit1296(void)
   config1296.make_v_drivetrain_loop = MakeVelocityDrivetrainLoop;
   config1296.make_kf_drivetrain_loop = MakeKFDrivetrainLoop;
 
-  config1296.dt = 0.02;  // Control loop time step.
-  config1296.stall_torque = 0.71;  // Stall torque in N m.
-  config1296.stall_current = 134.0;  // Stall current in amps.
-  config1296.free_speed_rpm = 18100.0;  // Free speed in rpm.
-  config1296.free_current = 0.7;  // Free current in amps.
-  config1296.j = 2.8;  // CIM moment of inertia in kg m^2.
-  config1296.mass = 22.79;  // Mass of the robot.
-  config1296.robot_radius = 0.558;  // Robot radius, in meters.
-  config1296.wheel_radius = 0.152;  // Wheel radius, in meters.
-  config1296.r = (12.0 / 134.0 / 2);  // Motor resistance.
-  config1296.v = ((config1296.free_speed_rpm / 60.0 * 2.0 * 3.141519) / (12.0 - config1296.free_current * config1296.r));  // Motor velocity constant.
-  config1296.t = (config1296.stall_torque / config1296.stall_current);  // Torque constant.
+  config1296.dt = kDt;                        // Control loop time step.
+  config1296.stall_torque = kStallTorque;     // Stall torque in N m.
+  config1296.stall_current = kStallCurrent;   // Stall current in amps.
+  config1296.free_speed_rpm = kFreeSpeedRPM;  // Free speed in rpm.
+  config1296.free_current = kFreeCurrent;     // Free current in amps.
+  config1296.j = kJ;                       // Robot moment of inertia in kg m^2.
+  config1296.mass = kMass;                 // Mass of the robot.
+  config1296.robot_radius = kRobotRadius;  // Robot radius, in meters.
+  config1296.wheel_radius = kWheelRadius;  // Wheel radius, in meters.
+  config1296.r = kR;                       // Motor resistance.
+  config1296.v = kV;                       // Motor velocity constant.
+  config1296.t = kT;                       // Torque constant.
 
-  config1296.turn_width = (0.558 * 4.0);  // Robot turn width, in meters.
-  config1296.high_gear_ratio = 28.0;  // Gear ratios
-  config1296.low_gear_ratio = 28.0;
+  config1296.turn_width = kRobotRadius * 2.0;  // Robot turn width, in meters.
+  config1296.high_gear_ratio = kGHigh;  // Gear ratios
+  config1296.low_gear_ratio = kGLow;
 
   loop1296 = new DrivetrainLoop(config1296);
 }

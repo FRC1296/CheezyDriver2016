@@ -424,7 +424,8 @@ def main(argv):
     dog_loop_writer.Write(argv[1], argv[2])
 
     cim_writer = control_loop.ControlLoopWriter(
-        "CIM", [drivetrain.CIM()])
+        "CIM", [drivetrain.CIM()],
+        namespaces=namespaces)
 
     cim_writer.Write(argv[3], argv[4])
     return
