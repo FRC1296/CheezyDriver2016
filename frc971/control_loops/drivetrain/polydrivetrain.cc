@@ -389,6 +389,9 @@ void PolyDrivetrain::Update() {
 #ifdef INCLUDE_971_INFRASTRUCTURE
 void PolyDrivetrain::SendMotors(
     ::frc971::control_loops::DrivetrainQueue::Output *output) {
+#else  //INCLUDE_971_INFRASTRUCTURE
+void PolyDrivetrain::SendMotors(DrivetrainOutput *output) {
+#endif //INCLUDE_971_INFRASTRUCTURE
   if (output != NULL) {
     output->left_voltage = loop_->U(0, 0);
     output->right_voltage = loop_->U(1, 0);
@@ -396,7 +399,6 @@ void PolyDrivetrain::SendMotors(
     output->right_high = right_gear_ == HIGH || right_gear_ == SHIFTING_UP;
   }
 }
-#endif //INCLUDE_971_INFRASTRUCTURE
 
 
 }  // namespace drivetrain

@@ -54,6 +54,8 @@ class PolyDrivetrain {
 
 #ifdef INCLUDE_971_INFRASTRUCTURE
   void SendMotors(::frc971::control_loops::DrivetrainQueue::Output *output);
+#else //INCLUDE_971_INFRASTRUCTURE
+  void SendMotors(DrivetrainOutput *output);
 #endif //INCLUDE_971_INFRASTRUCTURE
 
  private:

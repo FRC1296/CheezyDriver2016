@@ -74,6 +74,8 @@ class DrivetrainMotorsSS {
 #ifdef INCLUDE_971_INFRASTRUCTURE
   void SendMotors(
       ::frc971::control_loops::DrivetrainQueue::Output *output) const;
+#else //INCLUDE_971_INFRASTRUCTURE
+  void SendMotors(DrivetrainOutput *output);
 #endif //INCLUDE_971_INFRASTRUCTURE
 
   const LimitedDrivetrainLoop &loop() const { return *loop_; }

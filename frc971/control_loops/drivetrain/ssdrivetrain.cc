@@ -177,6 +177,9 @@ double DrivetrainMotorsSS::GetEstimatedRobotSpeed() const {
 #ifdef INCLUDE_971_INFRASTRUCTURE
 void DrivetrainMotorsSS::SendMotors(
     ::frc971::control_loops::DrivetrainQueue::Output *output) const {
+#else  //INCLUDE_971_INFRASTRUCTURE
+void DrivetrainMotorsSS::SendMotors(DrivetrainOutput *output) {
+#endif //INCLUDE_971_INFRASTRUCTURE
   if (output) {
     output->left_voltage = loop_->U(0, 0);
     output->right_voltage = loop_->U(1, 0);
@@ -184,7 +187,6 @@ void DrivetrainMotorsSS::SendMotors(
     output->right_high = true;
   }
 }
-#endif //INCLUDE_971_INFRASTRUCTURE
 
 
 }  // namespace drivetrain
