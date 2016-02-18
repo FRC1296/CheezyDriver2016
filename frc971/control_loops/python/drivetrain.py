@@ -35,7 +35,7 @@ class CIM(control_loop.ControlLoop):
     # Torque constant
     self.Kt = self.stall_torque / self.stall_current
     # Control loop time step
-    self.dt = 0.02
+    self.dt = 0.005
 
     # State feedback matrices
     self.A_continuous = numpy.matrix(
@@ -98,7 +98,7 @@ class Drivetrain(control_loop.ControlLoop):
       self.Gr = self.G_high
 
     # Control loop time step
-    self.dt = 0.02
+    self.dt = 0.005
 
     # These describe the way that a given side of a robot will be influenced
     # by the other side. Units of 1 / kg.

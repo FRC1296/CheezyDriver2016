@@ -51,8 +51,4 @@ extern "C" void CheezyIterate1296(
     DrivetrainOutput *output,
     DrivetrainStatus *status);
 
-}  // namespace drivetrain
-}  // namespace control_loops
-}  // namespace frc971
-
 #endif  // FRC1296_H_
