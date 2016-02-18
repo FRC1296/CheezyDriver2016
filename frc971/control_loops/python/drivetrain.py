@@ -71,7 +71,7 @@ class Drivetrain(control_loop.ControlLoop):
     # Free Current in Amps
     self.free_current = .7 * self.num_motors
     # Moment of inertia of the drivetrain in kg m^2
-    self.J = 2.8
+    self.J = (2.8 / 4.0)
     # Mass of the robot, in kg.
     self.m = 22.79
     # Radius of the robot, in meters (from last year).
@@ -86,8 +86,8 @@ class Drivetrain(control_loop.ControlLoop):
     # Torque constant
     self.Kt = self.stall_torque / self.stall_current
     # Gear ratios
-    self.G_low = 28.0
-    self.G_high = 28.0
+    self.G_low = 1.0/28.0
+    self.G_high = 1.0/28.0
     if left_low:
       self.Gl = self.G_low
     else:

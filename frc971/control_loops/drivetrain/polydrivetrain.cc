@@ -1,3 +1,5 @@
+#include <stdio.h>
+
 #include "frc971/control_loops/drivetrain/polydrivetrain.h"
 
 #include "aos/common/logging/logging.h"
@@ -137,7 +139,7 @@ void PolyDrivetrain::SetGoal(double wheel, double throttle, bool quickturn,
 
   wheel_ = sin(angular_range * wheel) / sin(angular_range);
   wheel_ = sin(angular_range * wheel_) / sin(angular_range);
-  wheel_ *= 0.4;
+
   quickturn_ = quickturn;
 
   static const double kThrottleDeadband = 0.05;
@@ -275,7 +277,7 @@ double PolyDrivetrain::MaxVelocity() {
 }
 
 void PolyDrivetrain::Update() {
-  if (!dt_config_->open_loop) {
+  if (!dt_config_.open_loop) {
     loop_->mutable_X_hat()(0, 0) = kf_.X_hat()(1, 0);
     loop_->mutable_X_hat()(1, 0) = kf_.X_hat()(3, 0);
   }
@@ -336,7 +338,7 @@ void PolyDrivetrain::Update() {
       loop_->mutable_U()[i] = ::aos::Clip(U_ideal[i], -12, 12);
     }
 
-    if (dt_config_->open_loop) {
+    if (dt_config_.open_loop) {
       loop_->mutable_X_hat() =
           loop_->A() * loop_->X_hat() + loop_->B() * loop_->U();
     }
