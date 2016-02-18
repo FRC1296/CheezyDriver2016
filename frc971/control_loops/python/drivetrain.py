@@ -75,9 +75,9 @@ class Drivetrain(control_loop.ControlLoop):
     # Mass of the robot, in kg.
     self.m = 22.79
     # Radius of the robot, in meters (from last year).
-    self.rb = 0.558
+    self.rb = 0.203
     # Radius of the wheels, in meters.
-    self.r = 0.152
+    self.r = 0.076
     # Resistance of the motor, divided by the number of motors.
     self.resistance = 12.0 / self.stall_current
     # Motor velocity constant

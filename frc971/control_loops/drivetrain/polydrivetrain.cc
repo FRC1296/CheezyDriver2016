@@ -137,7 +137,7 @@ void PolyDrivetrain::SetGoal(double wheel, double throttle, bool quickturn,
 
   wheel_ = sin(angular_range * wheel) / sin(angular_range);
   wheel_ = sin(angular_range * wheel_) / sin(angular_range);
-  wheel_ *= 1.5;
+  wheel_ *= 0.4;
   quickturn_ = quickturn;
 
   static const double kThrottleDeadband = 0.05;
