@@ -37,6 +37,8 @@ extern "C" void CheezyInit1296(void)
   config1296.high_gear_ratio = kGHigh;  // Gear ratios
   config1296.low_gear_ratio = kGLow;
 
+  config1296.open_loop = true;
+
   loop1296 = new DrivetrainLoop(config1296);
 }
 

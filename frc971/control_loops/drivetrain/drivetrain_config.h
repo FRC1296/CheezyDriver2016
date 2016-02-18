@@ -45,6 +45,7 @@ struct DrivetrainConfig {
   // Hall effect constants. Unused if not applicable to shifter type.
   constants::ShifterHallEffect left_drive;
   constants::ShifterHallEffect right_drive;
+  bool open_loop = false;
 };
 
 
