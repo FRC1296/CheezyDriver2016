@@ -35,15 +35,18 @@ DrivetrainLoop::DrivetrainLoop(
     ::frc971::control_loops::DrivetrainQueue *my_drivetrain)
     : aos::controls::ControlLoop<::frc971::control_loops::DrivetrainQueue>(
           my_drivetrain),
-      :dt_config_(dt_config),
-      kf_(dt_config_.make_kf_drivetrain_loop()) {
+      : dt_config_(dt_config),
+        kf_(dt_config_.make_kf_drivetrain_loop()),
+        dt_openloop_(dt_config_, &kf_),
+        dt_closedloop_(dt_config_) {
   ::aos::controls::HPolytope<0>::Init();
 }
 #else //INCLUDE_971_INFRASTRUCTURE
-DrivetrainLoop::DrivetrainLoop(
-    const DrivetrainConfig &dt_config)
-      :dt_config_(dt_config),
-      kf_(dt_config_.make_kf_drivetrain_loop()) {
+DrivetrainLoop::DrivetrainLoop(const DrivetrainConfig &dt_config)
+    : dt_config_(dt_config),
+      kf_(dt_config_.make_kf_drivetrain_loop()),
+      dt_openloop_(dt_config_, &kf_),
+      dt_closedloop_(dt_config_) {
   ::aos::controls::HPolytope<0>::Init();
 }
 #endif //INCLUDE_971_INFRASTRUCTURE

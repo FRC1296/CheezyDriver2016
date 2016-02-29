@@ -17,7 +17,8 @@ class PolyDrivetrain {
  public:
   enum Gear { HIGH, LOW, SHIFTING_UP, SHIFTING_DOWN };
 
-  PolyDrivetrain(const DrivetrainConfig &dt_config);
+  PolyDrivetrain(const DrivetrainConfig &dt_config,
+                 StateFeedbackLoop<7, 2, 3> *kf);
 
   int controller_index() const { return loop_->controller_index(); }
 
@@ -59,7 +60,7 @@ class PolyDrivetrain {
 #endif //INCLUDE_971_INFRASTRUCTURE
 
  private:
-  StateFeedbackLoop<7, 2, 3> kf_;
+  StateFeedbackLoop<7, 2, 3> *kf_;
 
   const ::aos::controls::HPolytope<2> U_Poly_;
 

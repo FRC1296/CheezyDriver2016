@@ -30,8 +30,9 @@ using ::frc971::control_loops::CIMLogging;
 #endif //INCLUDE_971_INFRASTRUCTURE
 using ::frc971::control_loops::CoerceGoal;
 
-PolyDrivetrain::PolyDrivetrain(const DrivetrainConfig &dt_config)
-    : kf_(dt_config.make_kf_drivetrain_loop()),
+PolyDrivetrain::PolyDrivetrain(const DrivetrainConfig &dt_config,
+                               StateFeedbackLoop<7, 2, 3> *kf)
+    : kf_(kf),
       U_Poly_((Eigen::Matrix<double, 4, 2>() << /*[[*/ 1, 0 /*]*/,
                /*[*/ -1, 0 /*]*/,
                /*[*/ 0, 1 /*]*/,
@@ -278,8 +279,8 @@ double PolyDrivetrain::MaxVelocity() {
 
 void PolyDrivetrain::Update() {
   if (!dt_config_.open_loop) {
-    loop_->mutable_X_hat()(0, 0) = kf_.X_hat()(1, 0);
-    loop_->mutable_X_hat()(1, 0) = kf_.X_hat()(3, 0);
+    loop_->mutable_X_hat()(0, 0) = kf_->X_hat()(1, 0);
+    loop_->mutable_X_hat()(1, 0) = kf_->X_hat()(3, 0);
   }
 
   // TODO(austin): Observer for the current velocity instead of difference

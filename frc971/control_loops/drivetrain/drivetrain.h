@@ -72,9 +72,9 @@ virtual void RunIteration(
 
   const DrivetrainConfig dt_config_;
 
-  PolyDrivetrain dt_openloop_{dt_config_};
-  DrivetrainMotorsSS dt_closedloop_{dt_config_};
   StateFeedbackLoop<7, 2, 3> kf_;
+  PolyDrivetrain dt_openloop_;
+  DrivetrainMotorsSS dt_closedloop_;
 };
 
 }  // namespace drivetrain
