@@ -124,8 +124,13 @@ void PolyDrivetrain::UpdateGears(Gear requested_gear) {
 
 void PolyDrivetrain::SetGoal(double wheel, double throttle, bool quickturn,
                              bool highgear) {
+  // Wheel nonlinearity.  Should be between like 0.05 and 1.0
   const double kWheelNonLinearity = 0.3;
-  // Apply a sin function that's scaled to make it feel better.
+  // Apply a sin function that's scaled to make it feel better.  Larger
+  // nonlinearities will make it such that more wheel motion is required for the
+  // same turn rate.  This re-allocates wheel range such that more wheel range
+  // is used for fine steering adjustments and less is used for changing the
+  // radius when the robot is almost turning around the inner wheel.
   const double angular_range = M_PI_2 * kWheelNonLinearity;
 
   if (dt_config_.shifter_type == ShifterType::SIMPLE_SHIFTER) {
@@ -140,6 +145,7 @@ void PolyDrivetrain::SetGoal(double wheel, double throttle, bool quickturn,
 
   wheel_ = sin(angular_range * wheel) / sin(angular_range);
   wheel_ = sin(angular_range * wheel_) / sin(angular_range);
+  wheel_ = 2.0 * wheel - wheel_;
 
   quickturn_ = quickturn;
 
